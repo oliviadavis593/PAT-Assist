@@ -4,6 +4,14 @@ A simple system for managing patient pre-procedure reminders: create workflows, 
 
 ---
 
+| Staff View | Patient View |
+| :---: | :---: |
+<img width="1728" height="647" alt="Screenshot 2026-04-17 at 8 35 41 PM" src="https://github.com/user-attachments/assets/a7707e41-5004-4ebe-bed2-007f6cc64fb0" /> | <img width="1728" height="583" alt="Screenshot 2026-04-17 at 8 35 51 PM" src="https://github.com/user-attachments/assets/03c7e94a-3a40-4f5b-869f-7facd346d47e" /> |
+
+
+<img width="1726" height="958" alt="Screenshot 2026-04-17 at 9 00 54 PM" src="https://github.com/user-attachments/assets/5b8b9d1f-9e0c-4056-930a-cc44ae8fa89d" />
+
+
 ## Quick Start
 
 ### Backend
