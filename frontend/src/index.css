@@ -1,0 +1,612 @@
+:root {
+  --blue-50:   #eff6ff;
+  --blue-100:  #dbeafe;
+  --blue-600:  #2563eb;
+  --blue-700:  #1d4ed8;
+  --green-50:  #f0fdf4;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --red-50:    #fef2f2;
+  --red-100:   #fee2e2;
+  --red-600:   #dc2626;
+  --amber-50:  #fffbeb;
+  --amber-600: #d97706;
+  --slate-50:  #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / .06);
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / .08), 0 1px 2px rgb(0 0 0 / .06);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / .08), 0 2px 4px -2px rgb(0 0 0 / .06);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--slate-800);
+  background: var(--slate-100);
+}
+
+/* ── App shell ───────────────────────────────────────────────── */
+
+.app-header {
+  background: var(--slate-900);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 52px;
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.app-logo-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--blue-600);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+}
+
+.app-logo h1 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.app-nav {
+  display: flex;
+  gap: 2px;
+}
+
+.app-nav button {
+  padding: 5px 14px;
+  border: none;
+  background: transparent;
+  color: var(--slate-400);
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background .15s, color .15s;
+}
+
+.app-nav button:hover { background: rgb(255 255 255 / .08); color: white; }
+.app-nav button.active { background: var(--blue-600); color: white; }
+
+.app-body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 24px;
+}
+
+/* ── Typography ──────────────────────────────────────────────── */
+
+.page-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--slate-900);
+  letter-spacing: -0.02em;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--slate-400);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+/* ── Cards / Surfaces ────────────────────────────────────────── */
+
+.card {
+  background: white;
+  border: 1px solid var(--slate-200);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--slate-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-body { padding: 16px; }
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .15s, box-shadow .15s;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--blue-600);
+  color: white;
+  box-shadow: var(--shadow-xs);
+}
+.btn-primary:hover { background: var(--blue-700); }
+.btn-primary:disabled { background: var(--slate-300); color: var(--slate-500); cursor: not-allowed; box-shadow: none; }
+
+.btn-secondary {
+  background: white;
+  color: var(--slate-700);
+  border: 1px solid var(--slate-200);
+  box-shadow: var(--shadow-xs);
+}
+.btn-secondary:hover { background: var(--slate-50); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--slate-600);
+  padding: 5px 10px;
+}
+.btn-ghost:hover { background: var(--slate-100); }
+
+.btn-sm { padding: 4px 10px; font-size: 12px; }
+
+/* ── Form elements ───────────────────────────────────────────── */
+
+.field { display: flex; flex-direction: column; gap: 4px; }
+
+.field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--slate-600);
+}
+
+input, textarea, select {
+  padding: 8px 11px;
+  border: 1px solid var(--slate-200);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--slate-800);
+  background: white;
+  box-shadow: var(--shadow-xs);
+  transition: border-color .15s, box-shadow .15s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--blue-600);
+  box-shadow: 0 0 0 3px var(--blue-100);
+}
+
+input::placeholder, textarea::placeholder { color: var(--slate-400); }
+textarea { resize: vertical; font-family: inherit; }
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+/* ── Status badges ───────────────────────────────────────────── */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .7;
+}
+
+.badge-pending   { background: var(--amber-50);  color: var(--amber-600); }
+.badge-sent      { background: var(--green-50);  color: var(--green-600); }
+.badge-failed    { background: var(--red-100);   color: var(--red-600); }
+.badge-active    { background: var(--blue-50);   color: var(--blue-600); }
+.badge-escalated { background: var(--red-100);   color: var(--red-600); }
+
+/* ── Staff two-column layout ─────────────────────────────────── */
+
+.staff-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* ── Workflow list (left panel) ──────────────────────────────── */
+
+.workflow-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--slate-100);
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+}
+
+.workflow-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: white;
+  cursor: pointer;
+  transition: background .1s;
+  border-left: 3px solid transparent;
+}
+
+.workflow-row:hover { background: var(--slate-50); }
+
+.workflow-row.selected {
+  background: var(--blue-50);
+  border-left-color: var(--blue-600);
+}
+
+.workflow-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.workflow-patient {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--slate-800);
+}
+
+.workflow-date {
+  font-size: 12px;
+  color: var(--slate-500);
+}
+
+.escalation-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--red-600);
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px var(--red-100);
+}
+
+/* ── Create workflow form ─────────────────────────────────────── */
+
+.create-form-card {
+  margin-bottom: 20px;
+}
+
+.create-form-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.create-form-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.create-form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* ── Workflow detail (right panel) ───────────────────────────── */
+
+.detail-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--slate-100);
+}
+
+.detail-patient-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 4px;
+}
+
+.detail-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.detail-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.detail-meta-item .label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate-400);
+}
+
+.detail-meta-item .value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--slate-700);
+}
+
+.escalation-banner {
+  margin: 0 20px 0;
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: var(--red-50);
+  border: 1px solid var(--red-100);
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.escalation-banner-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.escalation-banner-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--red-600);
+  margin-bottom: 2px;
+}
+
+.escalation-banner-reason {
+  font-size: 12px;
+  color: #7f1d1d;
+  line-height: 1.5;
+}
+
+.detail-section {
+  padding: 16px 20px;
+  border-top: 1px solid var(--slate-100);
+}
+
+.detail-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--slate-500);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+/* ── Reminder cards ──────────────────────────────────────────── */
+
+.reminder-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 14px;
+  background: white;
+  border: 1px solid var(--slate-200);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  box-shadow: var(--shadow-xs);
+}
+
+.reminder-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.reminder-type-label {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--slate-800);
+  min-width: 52px;
+}
+
+.reminder-type-sub {
+  font-size: 11px;
+  color: var(--slate-400);
+  margin-top: 1px;
+}
+
+.reminder-meta {
+  font-size: 12px;
+  color: var(--slate-500);
+}
+
+/* ── Response cards ──────────────────────────────────────────── */
+
+.response-card {
+  padding: 12px 14px;
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.response-text {
+  font-size: 13px;
+  color: var(--slate-700);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.response-time {
+  font-size: 11px;
+  color: var(--slate-400);
+}
+
+/* ── Empty states ────────────────────────────────────────────── */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--slate-400);
+  gap: 8px;
+}
+
+.empty-state-icon { font-size: 32px; opacity: .5; }
+.empty-state-text { font-size: 13px; }
+
+.empty-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 340px;
+  color: var(--slate-400);
+  gap: 10px;
+  text-align: center;
+}
+
+.empty-placeholder-icon { font-size: 36px; opacity: .35; }
+.empty-placeholder-text { font-size: 14px; font-weight: 500; }
+.empty-placeholder-sub { font-size: 12px; color: var(--slate-400); }
+
+/* ── Feedback messages ───────────────────────────────────────── */
+
+.msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.msg-success { background: var(--green-50); color: var(--green-700); border: 1px solid #bbf7d0; }
+.msg-error   { background: var(--red-50);   color: var(--red-600);   border: 1px solid var(--red-100); }
+
+/* ── Patient portal page ─────────────────────────────────────── */
+
+.patient-page {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.patient-page-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.patient-page-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--blue-600);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  margin: 0 auto 14px;
+}
+
+.patient-page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 6px;
+}
+
+.patient-page-subtitle {
+  font-size: 14px;
+  color: var(--slate-500);
+  line-height: 1.5;
+}
+
+.patient-form-card {
+  background: white;
+  border: 1px solid var(--slate-200);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.patient-form-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.patient-form-body input,
+.patient-form-body textarea {
+  width: 100%;
+}
+
+.patient-submit-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 11px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.patient-success {
+  padding: 40px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.patient-success-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--green-50);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.patient-success-title { font-size: 16px; font-weight: 700; color: var(--slate-900); }
+.patient-success-text  { font-size: 13px; color: var(--slate-500); }
