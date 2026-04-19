@@ -253,6 +253,19 @@ export function StaffPage() {
                 </div>
               )}
 
+              {/* Confirmation banner */}
+              {selected.status === "completed" && (
+                <div className="confirmation-banner">
+                  <span className="confirmation-banner-icon">✓</span>
+                  <div>
+                    <div className="confirmation-banner-title">Patient Confirmed</div>
+                    <div className="confirmation-banner-reason">
+                      Patient confirmed fasting compliance. No action required.
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Reminders */}
               <div className="detail-section">
                 <div className="detail-section-title">Reminders</div>

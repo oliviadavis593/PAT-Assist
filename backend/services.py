@@ -7,6 +7,7 @@ from models import Workflow, Reminder, PatientResponse, utcnow
 from schemas import CreateWorkflow, CreateResponse
 
 ESCALATION_KEYWORD = "did not fast"
+CONFIRMATION_KEYWORD = "i have fasted"
 
 
 class ReminderAlreadySentError(Exception):
@@ -100,13 +101,16 @@ def submit_response(db: Session, payload: CreateResponse) -> PatientResponse | N
     )
     db.add(response)
 
-    if ESCALATION_KEYWORD in payload.response_text.lower():
+    lowered = payload.response_text.lower()
+    if ESCALATION_KEYWORD in lowered:
         workflow.escalation_flag = True
         workflow.status = "escalated"
         workflow.escalation_reason = (
             f"Patient indicated they did not follow pre-procedure fasting instructions. "
             f"Original message: \"{payload.response_text}\""
         )
+    elif CONFIRMATION_KEYWORD in lowered and workflow.status == "active":
+        workflow.status = "completed"
 
     db.commit()
     db.refresh(response)

@@ -18,7 +18,7 @@ class Workflow(Base):
     id = Column(Integer, primary_key=True, index=True)
     patient_id = Column(String, nullable=False, index=True)
     procedure_date = Column(DateTime, nullable=False)
-    status = Column(String, default="active")       # active | escalated
+    status = Column(String, default="active")       # active | escalated | completed
     escalation_flag = Column(Boolean, default=False)
     escalation_reason = Column(String, nullable=True)
     created_at = Column(DateTime, default=utcnow)
